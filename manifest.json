@@ -20,7 +20,19 @@
                         "help": "Digite o número do processo no formato CNJ (NNNNNNN-DD.AAAA.J.TR.OOOO)"
                     }
                 }
-            ]
+            ],
+            "secrets": {
+                "name": "escavadorToken",
+                "type": "string",
+                "required": true,
+                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "form": {
+                    "type": "text",
+                    "label": "Token do Escavador",
+                    "placeholder": "Insira seu token aqui",
+                    "help": "Token necessário para autenticação na API do Escavador"
+                }
+            }
         },
         "buscarEnvolvido": {
             "script": "dist/buscarEnvolvido.js",
@@ -123,7 +135,19 @@
                         "help": "Filtrar processos que iniciaram antes desta data (formato: YYYY-MM-DD)"
                     }
                 }
-            ]
+            ],
+            "secrets": {
+                "name": "escavadorToken",
+                "type": "string",
+                "required": true,
+                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "form": {
+                    "type": "text",
+                    "label": "Token do Escavador",
+                    "placeholder": "Insira seu token aqui",
+                    "help": "Token necessário para autenticação na API do Escavador"
+                }
+            }
         },
         "buscarAdvogado": {
             "script": "dist/buscarAdvogado.js",
@@ -366,7 +390,19 @@
                         "help": "Filtrar processos que iniciaram antes desta data (formato: YYYY-MM-DD)"
                     }
                 }
-            ]
+            ],
+            "secrets": {
+                "name": "escavadorToken",
+                "type": "string",
+                "required": true,
+                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "form": {
+                    "type": "text",
+                    "label": "Token do Escavador",
+                    "placeholder": "Insira seu token aqui",
+                    "help": "Token necessário para autenticação na API do Escavador"
+                }
+            }
         },
         "buscarMovimentacoes": {
             "script": "dist/buscarMovimentacoes.js",
@@ -386,6 +422,18 @@
                     }
                 }
             ]
+        },
+        "secrets": {
+            "name": "escavadorToken",
+            "type": "string",
+            "required": true,
+            "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+            "form": {
+                "type": "text",
+                "label": "Token do Escavador",
+                "placeholder": "Insira seu token aqui",
+                "help": "Token necessário para autenticação na API do Escavador"
+            }
         }
     },
     "config": {

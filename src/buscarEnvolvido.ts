@@ -145,7 +145,7 @@ async function buscarEnvolvido(params: BuscarEnvolvidoParams): Promise<void> {
       return;
     }
 
-    const token = docgo.getEnv("ESCAVADOR_TOKEN");
+    const token = docgo.getEnv("ESCAVADOR_TOKEN") || docgo.getEnv("escavadorToken");
     if (!token) {
       console.log(
         docgo.result(false, null, "Token do Escavador não configurado")
