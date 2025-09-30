@@ -107,3 +107,4 @@ npm run build
 - Testes automatizados (mock fetch).
 
 ## Licença
+mit
