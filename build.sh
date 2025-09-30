@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "[jusbr] Installing deps..."
+APP_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")
+
+echo "[$APP_NAME] Installing deps..."
 npm install
 
-echo "[jusbr] Building..."
+echo "[$APP_NAME] Building..."
 npm run build
 
-echo "[jusbr] Build finished (dist/)"
+echo "[$APP_NAME] Build finished (dist/)"
