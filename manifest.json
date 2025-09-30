@@ -1,0 +1,397 @@
+{
+    "name": "escavador",
+    "version": "2.0.0",
+    "description": "Aplicação para consulta de processos jurídicos via API Escavador",
+    "functions": {
+        "buscarProcesso": {
+            "script": "dist/buscarProcessoCNJ.js",
+            "description": "Busca um processo pelo número CNJ",
+            "category": "tribunais",
+            "params": [
+                {
+                    "name": "numeroProcesso",
+                    "type": "string",
+                    "required": true,
+                    "description": "Número do processo no formato CNJ",
+                    "form": {
+                        "type": "text",
+                        "label": "Número do Processo",
+                        "placeholder": "Ex: 1234567-89.2023.8.26.0001",
+                        "help": "Digite o número do processo no formato CNJ (NNNNNNN-DD.AAAA.J.TR.OOOO)"
+                    }
+                }
+            ]
+        },
+        "buscarEnvolvido": {
+            "script": "dist/buscarEnvolvido.js",
+            "description": "Busca processos de um envolvido por nome ou CPF/CNPJ",
+            "category": "tribunais",
+            "params": [
+                {
+                    "name": "nome",
+                    "type": "string",
+                    "required": false,
+                    "description": "Nome do envolvido (obrigatório se CPF/CNPJ não for informado)",
+                    "form": {
+                        "type": "text",
+                        "label": "Nome do Envolvido",
+                        "placeholder": "Ex: João da Silva",
+                        "help": "Digite o nome completo da pessoa ou empresa"
+                    }
+                },
+                {
+                    "name": "cpfCnpj",
+                    "type": "string",
+                    "required": false,
+                    "description": "CPF ou CNPJ do envolvido (obrigatório se nome não for informado)",
+                    "form": {
+                        "type": "text",
+                        "label": "CPF/CNPJ",
+                        "placeholder": "Ex: 123.456.789-00 ou 12.345.678/0001-90",
+                        "help": "Digite o CPF (pessoa física) ou CNPJ (pessoa jurídica)"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "number",
+                    "required": false,
+                    "description": "Quantidade de processos por página",
+                    "defaultValue": 50,
+                    "form": {
+                        "type": "select",
+                        "label": "Limite por página",
+                        "placeholder": "Selecione o limite",
+                        "help": "Quantidade de processos retornados por página",
+                        "defaultValue": 50,
+                        "options": [
+                            {
+                                "label": "50 processos",
+                                "value": 50
+                            },
+                            {
+                                "label": "100 processos",
+                                "value": 100
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "required": false,
+                    "description": "Filtrar por status do processo",
+                    "defaultValue": "ATIVO",
+                    "form": {
+                        "type": "select",
+                        "label": "Status do Processo",
+                        "placeholder": "Selecione o status",
+                        "help": "Filtrar processos por status (classificação por IA)",
+                        "defaultValue": "ATIVO",
+                        "options": [
+                            {
+                                "label": "Ativo",
+                                "value": "ATIVO"
+                            },
+                            {
+                                "label": "Inativo",
+                                "value": "INATIVO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "dataMinima",
+                    "type": "string",
+                    "required": false,
+                    "description": "Data mínima de início do processo",
+                    "form": {
+                        "type": "text",
+                        "label": "Data Mínima",
+                        "placeholder": "YYYY-MM-DD",
+                        "help": "Filtrar processos que iniciaram após esta data (formato: YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "dataMaxima",
+                    "type": "string",
+                    "required": false,
+                    "description": "Data máxima de início do processo",
+                    "form": {
+                        "type": "text",
+                        "label": "Data Máxima",
+                        "placeholder": "YYYY-MM-DD",
+                        "help": "Filtrar processos que iniciaram antes desta data (formato: YYYY-MM-DD)"
+                    }
+                }
+            ]
+        },
+        "buscarAdvogado": {
+            "script": "dist/buscarAdvogado.js",
+            "description": "Busca processos de um advogado por número da OAB",
+            "category": "tribunais",
+            "params": [
+                {
+                    "name": "oabEstado",
+                    "type": "string",
+                    "required": true,
+                    "description": "Estado da OAB",
+                    "form": {
+                        "type": "select",
+                        "label": "Estado da OAB",
+                        "placeholder": "Selecione o estado",
+                        "help": "Selecione o estado da OAB do advogado",
+                        "options": [
+                            {
+                                "label": "Acre",
+                                "value": "AC"
+                            },
+                            {
+                                "label": "Alagoas",
+                                "value": "AL"
+                            },
+                            {
+                                "label": "Amapá",
+                                "value": "AP"
+                            },
+                            {
+                                "label": "Amazonas",
+                                "value": "AM"
+                            },
+                            {
+                                "label": "Bahia",
+                                "value": "BA"
+                            },
+                            {
+                                "label": "Ceará",
+                                "value": "CE"
+                            },
+                            {
+                                "label": "Distrito Federal",
+                                "value": "DF"
+                            },
+                            {
+                                "label": "Espírito Santo",
+                                "value": "ES"
+                            },
+                            {
+                                "label": "Goiás",
+                                "value": "GO"
+                            },
+                            {
+                                "label": "Maranhão",
+                                "value": "MA"
+                            },
+                            {
+                                "label": "Mato Grosso",
+                                "value": "MT"
+                            },
+                            {
+                                "label": "Mato Grosso do Sul",
+                                "value": "MS"
+                            },
+                            {
+                                "label": "Minas Gerais",
+                                "value": "MG"
+                            },
+                            {
+                                "label": "Pará",
+                                "value": "PA"
+                            },
+                            {
+                                "label": "Paraíba",
+                                "value": "PB"
+                            },
+                            {
+                                "label": "Paraná",
+                                "value": "PR"
+                            },
+                            {
+                                "label": "Pernambuco",
+                                "value": "PE"
+                            },
+                            {
+                                "label": "Piauí",
+                                "value": "PI"
+                            },
+                            {
+                                "label": "Rio de Janeiro",
+                                "value": "RJ"
+                            },
+                            {
+                                "label": "Rio Grande do Norte",
+                                "value": "RN"
+                            },
+                            {
+                                "label": "Rio Grande do Sul",
+                                "value": "RS"
+                            },
+                            {
+                                "label": "Rondônia",
+                                "value": "RO"
+                            },
+                            {
+                                "label": "Roraima",
+                                "value": "RR"
+                            },
+                            {
+                                "label": "Santa Catarina",
+                                "value": "SC"
+                            },
+                            {
+                                "label": "São Paulo",
+                                "value": "SP"
+                            },
+                            {
+                                "label": "Sergipe",
+                                "value": "SE"
+                            },
+                            {
+                                "label": "Tocantins",
+                                "value": "TO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "oabNumero",
+                    "type": "string",
+                    "required": true,
+                    "description": "Número da OAB",
+                    "form": {
+                        "type": "text",
+                        "label": "Número da OAB",
+                        "placeholder": "Ex: 123456",
+                        "help": "Digite o número da OAB do advogado"
+                    }
+                },
+                {
+                    "name": "oabTipo",
+                    "type": "string",
+                    "required": false,
+                    "description": "Tipo da OAB (opcional)",
+                    "form": {
+                        "type": "select",
+                        "label": "Tipo da OAB",
+                        "placeholder": "Selecione o tipo",
+                        "help": "Tipo da OAB (apenas se o mesmo número existir para diferentes tipos)",
+                        "options": [
+                            {
+                                "label": "Advogado",
+                                "value": "ADVOGADO"
+                            },
+                            {
+                                "label": "Suplementar",
+                                "value": "SUPLEMENTAR"
+                            },
+                            {
+                                "label": "Estagiário",
+                                "value": "ESTAGIARIO"
+                            },
+                            {
+                                "label": "Consultor Estrangeiro",
+                                "value": "CONSULTOR_ESTRANGEIRO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "number",
+                    "required": false,
+                    "description": "Quantidade de processos por página",
+                    "defaultValue": 50,
+                    "form": {
+                        "type": "select",
+                        "label": "Limite por página",
+                        "placeholder": "Selecione o limite",
+                        "help": "Quantidade de processos retornados por página",
+                        "defaultValue": 50,
+                        "options": [
+                            {
+                                "label": "50 processos",
+                                "value": 50
+                            },
+                            {
+                                "label": "100 processos",
+                                "value": 100
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "required": false,
+                    "description": "Filtrar por status do processo",
+                    "defaultValue": "ATIVO",
+                    "form": {
+                        "type": "select",
+                        "label": "Status do Processo",
+                        "placeholder": "Selecione o status",
+                        "help": "Filtrar processos por status (classificação por IA)",
+                        "defaultValue": "ATIVO",
+                        "options": [
+                            {
+                                "label": "Ativo",
+                                "value": "ATIVO"
+                            },
+                            {
+                                "label": "Inativo",
+                                "value": "INATIVO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "dataMinima",
+                    "type": "string",
+                    "required": false,
+                    "description": "Data mínima de início do processo",
+                    "form": {
+                        "type": "text",
+                        "label": "Data Mínima",
+                        "placeholder": "YYYY-MM-DD",
+                        "help": "Filtrar processos que iniciaram após esta data (formato: YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "dataMaxima",
+                    "type": "string",
+                    "required": false,
+                    "description": "Data máxima de início do processo",
+                    "form": {
+                        "type": "text",
+                        "label": "Data Máxima",
+                        "placeholder": "YYYY-MM-DD",
+                        "help": "Filtrar processos que iniciaram antes desta data (formato: YYYY-MM-DD)"
+                    }
+                }
+            ]
+        },
+        "buscarMovimentacoes": {
+            "script": "dist/buscarMovimentacoes.js",
+            "description": "Busca movimentações de um processo pelo número CNJ",
+            "category": "tribunais",
+            "params": [
+                {
+                    "name": "numeroProcesso",
+                    "type": "string",
+                    "required": true,
+                    "description": "Número do processo no formato CNJ",
+                    "form": {
+                        "type": "text",
+                        "label": "Número do Processo",
+                        "placeholder": "Ex: 1234567-89.2023.8.26.0001",
+                        "help": "Digite o número do processo no formato CNJ (NNNNNNN-DD.AAAA.J.TR.OOOO)"
+                    }
+                }
+            ]
+        }
+    },
+    "config": {
+        "timeout": 30000,
+        "max_retries": 3,
+        "cache_ttl": 3600
+    },
+    "mcp": true
+}
