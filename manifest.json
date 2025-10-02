@@ -21,11 +21,11 @@
                     }
                 }
             ],
-            "secrets": {
+            "auth": {
                 "name": "escavadorToken",
                 "type": "string",
                 "required": true,
-                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "description": "Token de acesso à API do Escavador (ex.: {\"escavadorToken\":\"seu_token_aqui\"})",
                 "form": {
                     "type": "text",
                     "label": "Token do Escavador",
@@ -136,11 +136,11 @@
                     }
                 }
             ],
-            "secrets": {
+            "auth": {
                 "name": "escavadorToken",
                 "type": "string",
                 "required": true,
-                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "description": "Token de acesso à API do Escavador (ex.: {\"escavadorToken\":\"seu_token_aqui\"})",
                 "form": {
                     "type": "text",
                     "label": "Token do Escavador",
@@ -391,11 +391,11 @@
                     }
                 }
             ],
-            "secrets": {
+            "auth": {
                 "name": "escavadorToken",
                 "type": "string",
                 "required": true,
-                "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+                "description": "Token de acesso à API do Escavador (ex.: {\"escavadorToken\":\"seu_token_aqui\"})",
                 "form": {
                     "type": "text",
                     "label": "Token do Escavador",
@@ -423,11 +423,11 @@
                 }
             ]
         },
-        "secrets": {
+        "auth": {
             "name": "escavadorToken",
             "type": "string",
             "required": true,
-            "description": "Token de acesso à API do Escavador em base64 (ex.: {\"escavadorToken\":\"seu_token_aqui\"} codificado em base64)",
+            "description": "Token de acesso à API do Escavador (ex.: {\"escavadorToken\":\"seu_token_aqui\"})",
             "form": {
                 "type": "text",
                 "label": "Token do Escavador",
