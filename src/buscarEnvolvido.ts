@@ -138,6 +138,9 @@ function buildQueryParams(params: BuscarEnvolvidoParams): string {
 async function buscarEnvolvido(params: BuscarEnvolvidoParams): Promise<void> {
   try {
     // Validar parâmetros obrigatórios
+    if (Array.isArray(params) && params.length === 1 && typeof params[0] === 'object') {
+      params = params[0];
+    }
     if (!params.nome && !params.cpfCnpj) {
       console.log(
         docgo.result(false, null, "É necessário informar nome ou CPF/CNPJ")

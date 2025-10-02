@@ -134,6 +134,11 @@ function buildQueryParams(params: BuscarAdvogadoParams): string {
 
 async function buscarAdvogado(params: BuscarAdvogadoParams): Promise<void> {
   try {
+    // convert [{...}] to {...} if needed
+    if (Array.isArray(params) && params.length === 1 && typeof params[0] === 'object') {
+      params = params[0];
+    }
+    
     // Validar parâmetros obrigatórios
     if (!params.oabEstado || !params.oabNumero) {
       console.log(

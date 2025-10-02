@@ -64,6 +64,9 @@ async function buscarMovimentacoes(
   params: BuscarMovimentacoesParams
 ): Promise<void> {
   try {
+    if (Array.isArray(params) && params.length === 1 && typeof params[0] === 'object') {
+      params = params[0];
+    }
     // Validar parâmetros obrigatórios
     if (!params.numeroProcesso) {
       console.log(
