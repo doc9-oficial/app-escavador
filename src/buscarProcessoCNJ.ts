@@ -5,6 +5,10 @@ import docgo, {
   Movimentacao,
 } from "docgo-sdk";
 
+interface BuscarProcessoParams {
+  numeroProcesso: string;
+}
+
 async function httpGet(url: string, token: string): Promise<any> {
   const headers = {
     Accept: "application/json",
@@ -79,9 +83,12 @@ function extractPartes(detail: any): Parte[] {
   return partes;
 }
 
-async function buscarProcesso(numeroProcesso: string): Promise<void> {
+async function buscarProcesso(params: BuscarProcessoParams): Promise<void> {
   try {
-    if (!numeroProcesso) {
+    if (Array.isArray(params) && params.length === 1 && typeof params[0] === 'object') {
+      params = params[0];
+    }
+    if (!params.numeroProcesso) {
       console.log(docgo.result(false, null, "numeroProcesso vazio"));
       return;
     }
@@ -100,13 +107,13 @@ async function buscarProcesso(numeroProcesso: string): Promise<void> {
 
     // Busca processo por número CNJ
     const url = `${baseUrl}/processos/numero_cnj/${encodeURIComponent(
-      numeroProcesso
+      params.numeroProcesso
     )}`;
     const detail = await httpGet(url, token);
 
     // Mapear resposta da API do Escavador para estrutura do DocGo
     const processo: Processo = {
-      numero: detail.numero_cnj || numeroProcesso,
+      numero: detail.numero_cnj || params.numeroProcesso,
       tribunal:
         detail.unidade_origem?.tribunal_sigla ||
         detail.estado_origem?.sigla ||
