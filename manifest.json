@@ -34,7 +34,12 @@
                     "required": true,
                     "label": "Número do processo no formato CNJ"
                 }
-            ]
+            ],
+            "help": {
+                "title": "Como usar a função buscarProcesso",
+                "body": "Para utilizar a função buscarProcesso, forneça o número do processo no formato CNJ. A função retornará informações detalhadas sobre o processo, incluindo partes envolvidas, advogados, tribunal e outros dados relevantes.",
+                "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
+            }
         },
         "buscarEnvolvido": {
             "script": "dist/buscarEnvolvido.js",
@@ -111,7 +116,12 @@
                     "required": false,
                     "label": "Data máxima de início do processo"
                 }
-            ]
+            ],
+            "help": {
+                "title": "Como usar a função buscarEnvolvido",
+                "body": "Para utilizar a função buscarEnvolvido, forneça o nome ou CPF/CNPJ do envolvido que deseja buscar. Você pode opcionalmente aplicar filtros como 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao envolvido consultado.",
+                "footer": "Certifique-se de fornecer pelo menos o nome ou CPF/CNPJ para obter resultados."
+            }
         },
         "buscarAdvogado": {
             "script": "dist/buscarAdvogado.js",
@@ -324,7 +334,12 @@
                     "required": false,
                     "label": "Data máxima de início do processo"
                 }
-            ]
+            ],
+            "help": {
+                "title": "Como usar a função buscarAdvogado",
+                "body": "Para utilizar a função buscarAdvogado, forneça o estado e número da OAB do advogado que deseja buscar. Você pode opcionalmente aplicar filtros como 'oabTipo', 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao advogado consultado.",
+                "footer": "Certifique-se de que o estado e número da OAB estejam corretos para obter resultados."
+            }
         },
         "buscarMovimentacoes": {
             "script": "dist/buscarMovimentacoes.js",
@@ -341,7 +356,12 @@
                     "required": true,
                     "label": "Número do processo no formato CNJ"
                 }
-            ]
+            ],
+            "help": {
+                "title": "Como usar a função buscarMovimentacoes",
+                "body": "Para utilizar a função buscarMovimentacoes, forneça o número do processo no formato CNJ. A função retornará uma lista cronológica de todas as movimentações e andamentos do processo consultado.",
+                "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
+            }
         }
     },
     "config": {
