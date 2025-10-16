@@ -21,6 +21,7 @@
     "functions": {
         "buscarProcesso": {
             "name": "Buscar Processo - CNJ",
+            "icon": "Gavel",
             "script": "dist/buscarProcessoCNJ.js",
             "description": "Busca um processo pelo número CNJ, retornando informações detalhadas sobre partes, advogados, tribunal e dados processuais.",
             "category": "tribunais",
@@ -44,6 +45,7 @@
         },
         "buscarEnvolvido": {
             "name": "Buscar Envolvido - Nome ou CPF/CNPJ",
+            "icon": "User",
             "script": "dist/buscarEnvolvido.js",
             "description": "Busca processos de um envolvido por nome ou CPF/CNPJ, permitindo localizar todos os processos em que uma pessoa física ou jurídica está envolvida.",
             "category": "tribunais",
@@ -127,6 +129,7 @@
         },
         "buscarAdvogado": {
             "name": "Buscar Advogado - Número da OAB",
+            "icon": "Scale",
             "script": "dist/buscarAdvogado.js",
             "description": "Busca processos de um advogado por número da OAB, permitindo análise da atuação profissional e histórico processual.",
             "category": "tribunais",
@@ -346,6 +349,7 @@
         },
         "buscarMovimentacoes": {
             "name": "Buscar Movimentações - Número CNJ",
+            "icon": "Gavel",
             "script": "dist/buscarMovimentacoes.js",
             "description": "Busca movimentações de um processo pelo número CNJ, listando todas as movimentações e andamentos cronologicamente.",
             "category": "tribunais",
