@@ -109,14 +109,14 @@
                 {
                     "name": "dataMinima",
                     "type": "string",
-                    "inputType": "text",
+                    "inputType": "date",
                     "required": false,
                     "label": "Data mínima de início do processo"
                 },
                 {
                     "name": "dataMaxima",
                     "type": "string",
-                    "inputType": "text",
+                    "inputType": "date",
                     "required": false,
                     "label": "Data máxima de início do processo"
                 }
@@ -138,9 +138,7 @@
                 "oabNumero": "",
                 "oabTipo": "",
                 "limit": 50,
-                "status": "ATIVO",
-                "dataMinima": "",
-                "dataMaxima": ""
+                "status": "ATIVO"
             },
             "params": [
                 {
@@ -325,20 +323,6 @@
                             "value": "INATIVO"
                         }
                     ]
-                },
-                {
-                    "name": "dataMinima",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": false,
-                    "label": "Data mínima de início do processo"
-                },
-                {
-                    "name": "dataMaxima",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": false,
-                    "label": "Data máxima de início do processo"
                 }
             ],
             "help": {
