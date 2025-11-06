@@ -52,6 +52,7 @@
             "values": {
                 "nome": "",
                 "cpfCnpj": "",
+                "limit": "50",
                 "status": "ATIVO"
             },
             "params": [
@@ -68,6 +69,23 @@
                     "inputType": "text",
                     "required": false,
                     "label": "CPF ou CNPJ do envolvido (obrigatório se nome não for informado)"
+                },
+                {
+                    "name": "limit",
+                    "type": "number",
+                    "inputType": "select",
+                    "required": false,
+                    "label": "Quantidade de processos por página",
+                    "options": [
+                        {
+                            "label": "50 processos",
+                            "value": "50"
+                        },
+                        {
+                            "label": "100 processos",
+                            "value": "100"
+                        }
+                    ]
                 },
                 {
                     "name": "status",
@@ -89,7 +107,7 @@
             ],
             "help": {
                 "title": "Como usar a função buscarEnvolvido",
-                "body": "Para utilizar a função buscarEnvolvido, forneça o nome ou CPF/CNPJ do envolvido que deseja buscar. Você pode opcionalmente aplicar filtros como 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao envolvido consultado.",
+                "body": "Para utilizar a função buscarEnvolvido, forneça o nome ou CPF/CNPJ do envolvido que deseja buscar. Você pode opcionalmente aplicar filtros como 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao envolvido consultado.",
                 "footer": "Certifique-se de fornecer pelo menos o nome ou CPF/CNPJ para obter resultados."
             }
         },
@@ -103,6 +121,7 @@
                 "oabEstado": "",
                 "oabNumero": "",
                 "oabTipo": "",
+                "limit": "50",
                 "status": "ATIVO"
             },
             "params": [
@@ -256,6 +275,23 @@
                     ]
                 },
                 {
+                    "name": "limit",
+                    "type": "number",
+                    "inputType": "select",
+                    "required": false,
+                    "label": "Quantidade de processos por página",
+                    "options": [
+                        {
+                            "label": "50 processos",
+                            "value": "50"
+                        },
+                        {
+                            "label": "100 processos",
+                            "value": "100"
+                        }
+                    ]
+                },
+                {
                     "name": "status",
                     "type": "string",
                     "inputType": "select",
@@ -275,7 +311,7 @@
             ],
             "help": {
                 "title": "Como usar a função buscarAdvogado",
-                "body": "Para utilizar a função buscarAdvogado, forneça o estado e número da OAB do advogado que deseja buscar. Você pode opcionalmente aplicar filtros como 'oabTipo', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao advogado consultado.",
+                "body": "Para utilizar a função buscarAdvogado, forneça o estado e número da OAB do advogado que deseja buscar. Você pode opcionalmente aplicar filtros como 'oabTipo', 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao advogado consultado.",
                 "footer": "Certifique-se de que o estado e número da OAB estejam corretos para obter resultados."
             }
         },
