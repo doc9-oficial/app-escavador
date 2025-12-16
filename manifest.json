@@ -1,349 +1,349 @@
 {
-    "name": "app-escavador",
-    "version": "3.0.0",
-    "description": "App Escavador - Consulta de Informações Processuais",
-    "auth": {
-        "description": {
-            "title": "Token de acesso à API do Escavador",
-            "body": "Para utilizar esta aplicação, é necessário obter um token de acesso à API do Escavador.",
-            "footer": "Token necessário para autenticação",
-            "link": "https://api.escavador.com/v2/docs"
-        },
-        "params": [
-            {
-                "name": "escavadorToken",
-                "type": "string",
-                "inputType": "password",
-                "required": true
-            }
-        ]
+  "name": "app-escavador",
+  "version": "3.0.0",
+  "description": "App Escavador - Consulta de Informações Processuais",
+  "auth": {
+    "description": {
+      "title": "Token de acesso à API do Escavador",
+      "body": "Para utilizar esta aplicação, é necessário obter um token de acesso à API do Escavador.",
+      "footer": "Token necessário para autenticação",
+      "link": "https://api.escavador.com/v2/docs"
     },
-    "functions": {
-        "buscarProcesso": {
-            "name": "Buscar Processo - CNJ",
-            "icon": "Gavel",
-            "script": "dist/buscarProcessoCNJ.js",
-            "description": "Busca um processo pelo número CNJ, retornando informações detalhadas sobre partes, advogados, tribunal e dados processuais.",
-            "category": "tribunais",
-            "values": {
-                "numeroProcesso": "0000000-00.0000.0.00.0000"
-            },
-            "params": [
-                {
-                    "name": "numeroProcesso",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": true,
-                    "label": "Número do processo no formato CNJ"
-                }
-            ],
-            "help": {
-                "title": "Como usar a função buscarProcesso",
-                "body": "Para utilizar a função buscarProcesso, forneça o número do processo no formato CNJ. A função retornará informações detalhadas sobre o processo, incluindo partes envolvidas, advogados, tribunal e outros dados relevantes.",
-                "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
-            }
-        },
-        "buscarEnvolvido": {
-            "name": "Buscar Envolvido - Nome ou CPF/CNPJ",
-            "icon": "User",
-            "script": "dist/buscarEnvolvido.js",
-            "description": "Busca processos de um envolvido por nome ou CPF/CNPJ, permitindo localizar todos os processos em que uma pessoa física ou jurídica está envolvida.",
-            "category": "tribunais",
-            "values": {
-                "nome": "",
-                "cpfCnpj": "",
-                "limit": "50",
-                "status": "ATIVO"
-            },
-            "params": [
-                {
-                    "name": "nome",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": false,
-                    "label": "Nome do envolvido (obrigatório se CPF/CNPJ não for informado)"
-                },
-                {
-                    "name": "cpfCnpj",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": false,
-                    "label": "CPF ou CNPJ do envolvido (obrigatório se nome não for informado)"
-                },
-                {
-                    "name": "limit",
-                    "type": "number",
-                    "inputType": "select",
-                    "required": false,
-                    "label": "Quantidade de processos por página",
-                    "options": [
-                        {
-                            "label": "50 processos",
-                            "value": "50"
-                        },
-                        {
-                            "label": "100 processos",
-                            "value": "100"
-                        }
-                    ]
-                },
-                {
-                    "name": "status",
-                    "type": "string",
-                    "inputType": "select",
-                    "required": false,
-                    "label": "Filtrar por status do processo",
-                    "options": [
-                        {
-                            "label": "Ativo",
-                            "value": "ATIVO"
-                        },
-                        {
-                            "label": "Inativo",
-                            "value": "INATIVO"
-                        }
-                    ]
-                }
-            ],
-            "help": {
-                "title": "Como usar a função buscarEnvolvido",
-                "body": "Para utilizar a função buscarEnvolvido, forneça o nome ou CPF/CNPJ do envolvido que deseja buscar. Você pode opcionalmente aplicar filtros como 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao envolvido consultado.",
-                "footer": "Certifique-se de fornecer pelo menos o nome ou CPF/CNPJ para obter resultados."
-            }
-        },
-        "buscarAdvogado": {
-            "name": "Buscar Advogado - Número da OAB",
-            "icon": "Scale",
-            "script": "dist/buscarAdvogado.js",
-            "description": "Busca processos de um advogado por número da OAB, permitindo análise da atuação profissional e histórico processual.",
-            "category": "tribunais",
-            "values": {
-                "oabEstado": "",
-                "oabNumero": "",
-                "oabTipo": "",
-                "limit": "50",
-                "status": "ATIVO"
-            },
-            "params": [
-                {
-                    "name": "oabEstado",
-                    "type": "string",
-                    "inputType": "select",
-                    "required": true,
-                    "label": "Estado da OAB",
-                    "options": [
-                        {
-                            "label": "AC",
-                            "value": "AC"
-                        },
-                        {
-                            "label": "AL",
-                            "value": "AL"
-                        },
-                        {
-                            "label": "AP",
-                            "value": "AP"
-                        },
-                        {
-                            "label": "AM",
-                            "value": "AM"
-                        },
-                        {
-                            "label": "BA",
-                            "value": "BA"
-                        },
-                        {
-                            "label": "CE",
-                            "value": "CE"
-                        },
-                        {
-                            "label": "DF",
-                            "value": "DF"
-                        },
-                        {
-                            "label": "ES",
-                            "value": "ES"
-                        },
-                        {
-                            "label": "GO",
-                            "value": "GO"
-                        },
-                        {
-                            "label": "MA",
-                            "value": "MA"
-                        },
-                        {
-                            "label": "MT",
-                            "value": "MT"
-                        },
-                        {
-                            "label": "MS",
-                            "value": "MS"
-                        },
-                        {
-                            "label": "MG",
-                            "value": "MG"
-                        },
-                        {
-                            "label": "PA",
-                            "value": "PA"
-                        },
-                        {
-                            "label": "PB",
-                            "value": "PB"
-                        },
-                        {
-                            "label": "PR",
-                            "value": "PR"
-                        },
-                        {
-                            "label": "PE",
-                            "value": "PE"
-                        },
-                        {
-                            "label": "PI",
-                            "value": "PI"
-                        },
-                        {
-                            "label": "RJ",
-                            "value": "RJ"
-                        },
-                        {
-                            "label": "RN",
-                            "value": "RN"
-                        },
-                        {
-                            "label": "RS",
-                            "value": "RS"
-                        },
-                        {
-                            "label": "RO",
-                            "value": "RO"
-                        },
-                        {
-                            "label": "RR",
-                            "value": "RR"
-                        },
-                        {
-                            "label": "SC",
-                            "value": "SC"
-                        },
-                        {
-                            "label": "SP",
-                            "value": "SP"
-                        },
-                        {
-                            "label": "SE",
-                            "value": "SE"
-                        },
-                        {
-                            "label": "TO",
-                            "value": "TO"
-                        }
-                    ]
-                },
-                {
-                    "name": "oabNumero",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": true,
-                    "label": "Número da OAB"
-                },
-                {
-                    "name": "oabTipo",
-                    "type": "string",
-                    "inputType": "select",
-                    "required": false,
-                    "label": "Tipo da OAB (opcional)",
-                    "options": [
-                        {
-                            "label": "Advogado",
-                            "value": "ADVOGADO"
-                        },
-                        {
-                            "label": "Suplementar",
-                            "value": "SUPLEMENTAR"
-                        },
-                        {
-                            "label": "Estagiário",
-                            "value": "ESTAGIARIO"
-                        },
-                        {
-                            "label": "Consultor Estrangeiro",
-                            "value": "CONSULTOR_ESTRANGEIRO"
-                        }
-                    ]
-                },
-                {
-                    "name": "limit",
-                    "type": "number",
-                    "inputType": "select",
-                    "required": false,
-                    "label": "Quantidade de processos por página",
-                    "options": [
-                        {
-                            "label": "50 processos",
-                            "value": "50"
-                        },
-                        {
-                            "label": "100 processos",
-                            "value": "100"
-                        }
-                    ]
-                },
-                {
-                    "name": "status",
-                    "type": "string",
-                    "inputType": "select",
-                    "required": false,
-                    "label": "Filtrar por status do processo",
-                    "options": [
-                        {
-                            "label": "Ativo",
-                            "value": "ATIVO"
-                        },
-                        {
-                            "label": "Inativo",
-                            "value": "INATIVO"
-                        }
-                    ]
-                }
-            ],
-            "help": {
-                "title": "Como usar a função buscarAdvogado",
-                "body": "Para utilizar a função buscarAdvogado, forneça o estado e número da OAB do advogado que deseja buscar. Você pode opcionalmente aplicar filtros como 'oabTipo', 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao advogado consultado.",
-                "footer": "Certifique-se de que o estado e número da OAB estejam corretos para obter resultados."
-            }
-        },
-        "buscarMovimentacoes": {
-            "name": "Buscar Movimentações - Número CNJ",
-            "icon": "Gavel",
-            "script": "dist/buscarMovimentacoes.js",
-            "description": "Busca movimentações de um processo pelo número CNJ, listando todas as movimentações e andamentos cronologicamente.",
-            "category": "tribunais",
-            "values": {
-                "numeroProcesso": "0000000-00.0000.0.00.0000"
-            },
-            "params": [
-                {
-                    "name": "numeroProcesso",
-                    "type": "string",
-                    "inputType": "text",
-                    "required": true,
-                    "label": "Número do processo no formato CNJ"
-                }
-            ],
-            "help": {
-                "title": "Como usar a função buscarMovimentacoes",
-                "body": "Para utilizar a função buscarMovimentacoes, forneça o número do processo no formato CNJ. A função retornará uma lista cronológica de todas as movimentações e andamentos do processo consultado.",
-                "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
-            }
+    "params": [
+      {
+        "name": "escavadorToken",
+        "type": "string",
+        "inputType": "password",
+        "required": true
+      }
+    ]
+  },
+  "functions": {
+    "buscarProcesso": {
+      "name": "Escavador - Buscar Processo pelo Número CNJ",
+      "icon": "Gavel",
+      "script": "dist/buscarProcessoCNJ.js",
+      "description": "Busca um processo pelo número CNJ, retornando informações detalhadas sobre partes, advogados, tribunal e dados processuais.",
+      "category": "judicial",
+      "values": {
+        "numeroProcesso": "0000000-00.0000.0.00.0000"
+      },
+      "params": [
+        {
+          "name": "numeroProcesso",
+          "type": "string",
+          "inputType": "text",
+          "required": true,
+          "label": "Número do processo no formato CNJ"
         }
+      ],
+      "help": {
+        "title": "Como usar a função buscarProcesso",
+        "body": "Para utilizar a função buscarProcesso, forneça o número do processo no formato CNJ. A função retornará informações detalhadas sobre o processo, incluindo partes envolvidas, advogados, tribunal e outros dados relevantes.",
+        "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
+      }
     },
-    "config": {
-        "timeout": 30000,
-        "max_retries": 3,
-        "cache_ttl": 3600
+    "buscarEnvolvido": {
+      "name": "Escavador - Buscar Envolvido por Nome ou CPF/CNPJ",
+      "icon": "User",
+      "script": "dist/buscarEnvolvido.js",
+      "description": "Busca processos de um envolvido por nome ou CPF/CNPJ, permitindo localizar todos os processos em que uma pessoa física ou jurídica está envolvida.",
+      "category": "judicial",
+      "values": {
+        "nome": "",
+        "cpfCnpj": "",
+        "limit": "50",
+        "status": "ATIVO"
+      },
+      "params": [
+        {
+          "name": "nome",
+          "type": "string",
+          "inputType": "text",
+          "required": false,
+          "label": "Nome do envolvido (obrigatório se CPF/CNPJ não for informado)"
+        },
+        {
+          "name": "cpfCnpj",
+          "type": "string",
+          "inputType": "text",
+          "required": false,
+          "label": "CPF ou CNPJ do envolvido (obrigatório se nome não for informado)"
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "inputType": "select",
+          "required": false,
+          "label": "Quantidade de processos por página",
+          "options": [
+            {
+              "label": "50 processos",
+              "value": "50"
+            },
+            {
+              "label": "100 processos",
+              "value": "100"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "inputType": "select",
+          "required": false,
+          "label": "Filtrar por status do processo",
+          "options": [
+            {
+              "label": "Ativo",
+              "value": "ATIVO"
+            },
+            {
+              "label": "Inativo",
+              "value": "INATIVO"
+            }
+          ]
+        }
+      ],
+      "help": {
+        "title": "Como usar a função buscarEnvolvido",
+        "body": "Para utilizar a função buscarEnvolvido, forneça o nome ou CPF/CNPJ do envolvido que deseja buscar. Você pode opcionalmente aplicar filtros como 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao envolvido consultado.",
+        "footer": "Certifique-se de fornecer pelo menos o nome ou CPF/CNPJ para obter resultados."
+      }
     },
-    "mcp": true
+    "buscarAdvogado": {
+      "name": "Escavador - Buscar Advogado por Número da OAB",
+      "icon": "Scale",
+      "script": "dist/buscarAdvogado.js",
+      "description": "Busca processos de um advogado por número da OAB, permitindo análise da atuação profissional e histórico processual.",
+      "category": "judicial",
+      "values": {
+        "oabEstado": "",
+        "oabNumero": "",
+        "oabTipo": "",
+        "limit": "50",
+        "status": "ATIVO"
+      },
+      "params": [
+        {
+          "name": "oabEstado",
+          "type": "string",
+          "inputType": "select",
+          "required": true,
+          "label": "Estado da OAB",
+          "options": [
+            {
+              "label": "AC",
+              "value": "AC"
+            },
+            {
+              "label": "AL",
+              "value": "AL"
+            },
+            {
+              "label": "AP",
+              "value": "AP"
+            },
+            {
+              "label": "AM",
+              "value": "AM"
+            },
+            {
+              "label": "BA",
+              "value": "BA"
+            },
+            {
+              "label": "CE",
+              "value": "CE"
+            },
+            {
+              "label": "DF",
+              "value": "DF"
+            },
+            {
+              "label": "ES",
+              "value": "ES"
+            },
+            {
+              "label": "GO",
+              "value": "GO"
+            },
+            {
+              "label": "MA",
+              "value": "MA"
+            },
+            {
+              "label": "MT",
+              "value": "MT"
+            },
+            {
+              "label": "MS",
+              "value": "MS"
+            },
+            {
+              "label": "MG",
+              "value": "MG"
+            },
+            {
+              "label": "PA",
+              "value": "PA"
+            },
+            {
+              "label": "PB",
+              "value": "PB"
+            },
+            {
+              "label": "PR",
+              "value": "PR"
+            },
+            {
+              "label": "PE",
+              "value": "PE"
+            },
+            {
+              "label": "PI",
+              "value": "PI"
+            },
+            {
+              "label": "RJ",
+              "value": "RJ"
+            },
+            {
+              "label": "RN",
+              "value": "RN"
+            },
+            {
+              "label": "RS",
+              "value": "RS"
+            },
+            {
+              "label": "RO",
+              "value": "RO"
+            },
+            {
+              "label": "RR",
+              "value": "RR"
+            },
+            {
+              "label": "SC",
+              "value": "SC"
+            },
+            {
+              "label": "SP",
+              "value": "SP"
+            },
+            {
+              "label": "SE",
+              "value": "SE"
+            },
+            {
+              "label": "TO",
+              "value": "TO"
+            }
+          ]
+        },
+        {
+          "name": "oabNumero",
+          "type": "string",
+          "inputType": "text",
+          "required": true,
+          "label": "Número da OAB"
+        },
+        {
+          "name": "oabTipo",
+          "type": "string",
+          "inputType": "select",
+          "required": false,
+          "label": "Tipo da OAB (opcional)",
+          "options": [
+            {
+              "label": "Advogado",
+              "value": "ADVOGADO"
+            },
+            {
+              "label": "Suplementar",
+              "value": "SUPLEMENTAR"
+            },
+            {
+              "label": "Estagiário",
+              "value": "ESTAGIARIO"
+            },
+            {
+              "label": "Consultor Estrangeiro",
+              "value": "CONSULTOR_ESTRANGEIRO"
+            }
+          ]
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "inputType": "select",
+          "required": false,
+          "label": "Quantidade de processos por página",
+          "options": [
+            {
+              "label": "50 processos",
+              "value": "50"
+            },
+            {
+              "label": "100 processos",
+              "value": "100"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "inputType": "select",
+          "required": false,
+          "label": "Filtrar por status do processo",
+          "options": [
+            {
+              "label": "Ativo",
+              "value": "ATIVO"
+            },
+            {
+              "label": "Inativo",
+              "value": "INATIVO"
+            }
+          ]
+        }
+      ],
+      "help": {
+        "title": "Como usar a função buscarAdvogado",
+        "body": "Para utilizar a função buscarAdvogado, forneça o estado e número da OAB do advogado que deseja buscar. Você pode opcionalmente aplicar filtros como 'oabTipo', 'limit', 'status', 'dataMinima' e 'dataMaxima' para refinar os resultados. A função retornará uma lista de processos relacionados ao advogado consultado.",
+        "footer": "Certifique-se de que o estado e número da OAB estejam corretos para obter resultados."
+      }
+    },
+    "buscarMovimentacoes": {
+      "name": "Escavador - Buscar Movimentações por Número CNJ",
+      "icon": "Gavel",
+      "script": "dist/buscarMovimentacoes.js",
+      "description": "Busca movimentações de um processo pelo número CNJ, listando todas as movimentações e andamentos cronologicamente.",
+      "category": "judicial",
+      "values": {
+        "numeroProcesso": "0000000-00.0000.0.00.0000"
+      },
+      "params": [
+        {
+          "name": "numeroProcesso",
+          "type": "string",
+          "inputType": "text",
+          "required": true,
+          "label": "Número do processo no formato CNJ"
+        }
+      ],
+      "help": {
+        "title": "Como usar a função buscarMovimentacoes",
+        "body": "Para utilizar a função buscarMovimentacoes, forneça o número do processo no formato CNJ. A função retornará uma lista cronológica de todas as movimentações e andamentos do processo consultado.",
+        "footer": "Certifique-se de que o número do processo esteja correto para obter resultados."
+      }
+    }
+  },
+  "config": {
+    "timeout": 30000,
+    "max_retries": 3,
+    "cache_ttl": 3600
+  },
+  "mcp": true
 }
