@@ -24,7 +24,7 @@
       "icon": "Gavel",
       "script": "dist/buscarProcessoCNJ.js",
       "description": "Busca um processo pelo número CNJ, retornando informações detalhadas sobre partes, advogados, tribunal e dados processuais.",
-      "category": "judicial",
+      "category": "juridico",
       "values": {
         "numeroProcesso": "0000000-00.0000.0.00.0000"
       },
@@ -48,7 +48,7 @@
       "icon": "User",
       "script": "dist/buscarEnvolvido.js",
       "description": "Busca processos de um envolvido por nome ou CPF/CNPJ, permitindo localizar todos os processos em que uma pessoa física ou jurídica está envolvida.",
-      "category": "judicial",
+      "category": "juridico",
       "values": {
         "nome": "",
         "cpfCnpj": "",
@@ -116,7 +116,7 @@
       "icon": "Scale",
       "script": "dist/buscarAdvogado.js",
       "description": "Busca processos de um advogado por número da OAB, permitindo análise da atuação profissional e histórico processual.",
-      "category": "judicial",
+      "category": "juridico",
       "values": {
         "oabEstado": "",
         "oabNumero": "",
@@ -320,7 +320,7 @@
       "icon": "Gavel",
       "script": "dist/buscarMovimentacoes.js",
       "description": "Busca movimentações de um processo pelo número CNJ, listando todas as movimentações e andamentos cronologicamente.",
-      "category": "judicial",
+      "category": "juridico",
       "values": {
         "numeroProcesso": "0000000-00.0000.0.00.0000"
       },
